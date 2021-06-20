@@ -19,18 +19,3 @@ APawnBase::APawnBase()
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
-
-void APawnBase::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
-void APawnBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
-
-void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
