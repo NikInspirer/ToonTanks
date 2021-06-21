@@ -15,15 +15,16 @@ class TOONTANKS_API APawnTank : public APawnBase
 {
 	GENERATED_BODY()
 
-	public:
+public:
 	explicit APawnTank();
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	protected:
+protected:
 	virtual void BeginPlay() override;
+	virtual void HandleDestruction() override;
 
-	private:
+private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* Camera;
 
@@ -32,9 +33,12 @@ class TOONTANKS_API APawnTank : public APawnBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float MoveSpeed;
-	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	float RotateSpeed;
+
+	UPROPERTY()
+	APlayerController* PlayerControllerRef;
 
 	FVector MoveDirection;
 	FQuat RotationDirection;
