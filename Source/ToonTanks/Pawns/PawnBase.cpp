@@ -3,6 +3,7 @@
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
 #include "ToonTanks/Actors/ProjectileBase.h"
+#include "ToonTanks/Components/HealthComponent.h"
 
 APawnBase::APawnBase()
 {
@@ -19,6 +20,13 @@ APawnBase::APawnBase()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+}
+
+void APawnBase::PawnDestroy()
+{
+	HandleDestruction();
 }
 
 void APawnBase::RotateTurret(const FVector& LookAtTarget)

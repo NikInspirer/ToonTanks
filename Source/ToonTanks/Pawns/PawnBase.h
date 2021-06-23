@@ -8,6 +8,7 @@
 
 class UCapsuleComponent;
 class AProjectileBase;
+class UHealthComponent;
 
 UCLASS()
 class TOONTANKS_API APawnBase : public APawn
@@ -16,6 +17,7 @@ class TOONTANKS_API APawnBase : public APawn
 
 public:
 	APawnBase();
+	void PawnDestroy();
 
 protected:
 	void RotateTurret(const FVector& LookAtTarget);
@@ -37,4 +39,7 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile", meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AProjectileBase> ProjectileClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats", meta = (AllowPrivateAccess = "true"))
+	UHealthComponent* HealthComponent;
 };
