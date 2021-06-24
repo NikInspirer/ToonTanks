@@ -14,6 +14,7 @@ APawnTank::APawnTank()
 
 	MoveSpeed = 100.0f;
 	RotateSpeed = 100.0f;
+	bIsPlayerAlive = true;
 }
 
 void APawnTank::BeginPlay()
@@ -26,6 +27,11 @@ void APawnTank::BeginPlay()
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
+	
+	bIsPlayerAlive = false;
+	
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
 }
 
 void APawnTank::Tick(float DeltaTime)
@@ -51,6 +57,11 @@ void APawnTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	InputComponent->BindAxis("MoveForward", this, &APawnTank::CalculateMoveInput);
 	InputComponent->BindAxis("Turn", this, &APawnTank::CalculateRotateInput);
 	InputComponent->BindAction("Fire", IE_Pressed, this, &APawnTank::Fire);
+}
+
+bool APawnTank::GeIsPlayerAlive() const
+{
+	return bIsPlayerAlive;
 }
 
 void APawnTank::CalculateMoveInput(float Value)

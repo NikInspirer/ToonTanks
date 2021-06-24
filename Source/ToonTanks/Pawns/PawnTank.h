@@ -20,6 +20,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	FORCEINLINE bool GeIsPlayerAlive() const;
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void HandleDestruction() override;
@@ -40,6 +42,7 @@ private:
 	UPROPERTY()
 	APlayerController* PlayerControllerRef;
 
+	bool bIsPlayerAlive;
 	FVector MoveDirection;
 	FQuat RotationDirection;
 
