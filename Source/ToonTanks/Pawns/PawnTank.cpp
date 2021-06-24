@@ -26,7 +26,6 @@ void APawnTank::BeginPlay()
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
-	Destroy();
 }
 
 void APawnTank::Tick(float DeltaTime)
